@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        //The Recursive Way to Do the Hanoi
+        //The Recursive Way to Do the Hanoi Tower problem
         int numberOfMoves;
         Tower t1 = new Tower();
         t1.name = "Tower 1";
@@ -22,7 +22,9 @@ public class Main
             t1.add(disk);
         }
         t1.print();
-        t1.moveDisks(numberOfDisks, t2, t3);
+        //t1.moveDisks(numberOfDisks, t2, t3);
+        moveDisksIteratively(numberOfDisks, t1, t2, t3);
+
         t2.print();
 
 
@@ -32,19 +34,29 @@ public class Main
 
     }
 
-    public static void moveTowers(int disks, Stack<Integer> src, Stack<Integer> des, Stack<Integer> aux)
+    public static void moveDisksIteratively(int quantity, Tower src, Tower des, Tower aux)
     {
-        int i = 0, moves = 0;
+        if(quantity <= 0) return;
 
-        if(disks % 2 == 0)
+        int numberOfMoves = (int) Math.pow(2, (quantity - 1));
+
+        for(int i = 1; i < numberOfMoves; i++)
         {
+            if(i % 3 == 1)
+            {
+                src.moveDisks(quantity, src, des);
+            }
+
+            else if(i % 3 == 2)
+            {
+                src.moveDisks(quantity, src, aux);
+            }
+
+            else if (i % 3 == 0)
+            {
+                src.moveDisks(quantity, aux, des);
+            }
 
         }
-
-        for(i = disks; i < moves; i--)
-        {
-            src.push(i);
-        }
-
     }
 }
