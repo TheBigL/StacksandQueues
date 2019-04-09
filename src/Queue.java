@@ -16,6 +16,8 @@ public class Queue
 
     private Node tail;
 
+
+
     public boolean isEmpty()
     {
         return head == null;
@@ -23,6 +25,10 @@ public class Queue
 
     public int peek(int data)
     {
+        if(isEmpty())
+        {
+            throw new NullPointerException("Your queue is empty. You need to enter a number before you can even peek at what's inside.");
+        }
         return head.data;
     }
 
