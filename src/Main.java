@@ -22,8 +22,8 @@ public class Main
             t1.add(disk);
         }
         t1.print();
-        //t1.moveDisks(numberOfDisks, t2, t3);
-        moveDisksIteratively(numberOfDisks, t1, t2, t3);
+        t1.moveDisks(numberOfDisks, t2, t3);
+        //moveDisksIteratively(numberOfDisks, t1, t2, t3);
 
         t2.print();
 
